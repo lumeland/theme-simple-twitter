@@ -21,7 +21,7 @@ export default function (options: Partial<Options> = {}) {
       "_data.yml",
       "404.md",
       "pages.page.js",
-      "styles.css",
+      "style.css",
       "tweets.page.ts",
     ];
 
