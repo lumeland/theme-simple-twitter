@@ -1,0 +1,31 @@
+---
+layout: layouts/base.vto
+---
+
+<main class="tweet-permalink" data-pagefind-body>
+  {{ include "templates/tweet.vto" { tweet: it } }}
+</main>
+
+<nav class="page-navigation pagination">
+  <ul>
+    {{ set previous = search.previousPage(url, "type=tweet") }}
+    {{ if previous }}
+      <li class="pagination-prev">
+        <a href="{{ previous.url }}" rel="prev">
+          <strong>Previous tweet</strong>
+        </a>
+      </li>
+    {{ /if }}
+    <li class="pagination-page">
+      <a href="/">Home</a>
+    </li>
+    {{ set next = search.nextPage(url, "type=tweet") }}
+    {{ if next }}
+      <li class="pagination-next">
+        <a href="{{ next.url }}" rel="next">
+          <strong>Next tweet</strong>
+        </a>
+      </li>
+    {{ /if }}
+  </ul>
+</nav>

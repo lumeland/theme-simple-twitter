@@ -1,0 +1,9 @@
+/* Lume's design system */
+@import "https://unpkg.com/@lumeland/ds@0.5.2/ds.css";
+@import "css/tweets.css";
+@import "css/page.css";
+
+:root {
+  --font-family-display: text, system-ui, sans-serif;
+  --font-family-ui: text, system-ui, sans-serif;
+}

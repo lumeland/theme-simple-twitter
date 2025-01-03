@@ -1,0 +1,62 @@
+<article class="tweet">
+  <header class="tweet-header">
+    {{ if tweet.reply_to }}
+      <a href="{{ tweet.url }}" class="tweet-avatar">
+        <img class="tweet-avatar-img" src="{{ account.avatar }}" alt="Profile picture of {{ tweet.author }}">
+        <img inline class="tweet-avatar-icon" src="{{ "arrow-bend-up-left" |> icon("phosphor") }}" alt="Reply icon">
+      </a>
+      <span class="tweet-type">
+        Reply to <a href="{{ tweet.reply_to_url }}">{{ tweet.reply_to }}</a><br>
+        <a href="{{ tweet.url }}">
+          {{ tweet.date |> date("HUMAN_DATE") }}
+        </a>
+      </span>
+    {{ else if tweet.retweet_of }}
+      <a href="{{ tweet.url }}" class="tweet-avatar">
+        <img inline class="tweet-avatar-img" src="{{ "repeat" |> icon("phosphor") }}" alt="Retweet icon">
+      </a>
+      <span class="tweet-type">
+        Retweet of <a href="https://x.com/{{ tweet.retweet_of }}">@{{ tweet.retweet_of }}</a> post<br>
+        <a href="{{ tweet.url }}">
+          {{ tweet.date |> date("HUMAN_DATE") }}
+        </a>
+      </span>
+    {{ else }}
+      <a href="{{ tweet.url }}" class="tweet-avatar">
+        <img class="tweet-avatar-img" src="{{ account.avatar }}" alt="Profile picture of {{ tweet.author }}">
+      </a>
+      <span class="tweet-type">
+        {{ account.username }} post<br>
+        <a href="{{ tweet.url }}">
+          {{ tweet.date |> date("HUMAN_DATE") }}
+        </a>
+      </span>
+    {{ /if }}
+    
+  </header>
+  <blockquote class="tweet-content" lang="{{ tweet.lang }}">
+    <p>{{ tweet.content }}</p>
+    <footer class="tweet-info">
+      <span class="tweet-info-item">
+        <img inline src="{{ "heart:bold" |> icon("phosphor") }}" alt="Likes"> {{ tweet.likes }}
+      </span>
+      <span class="tweet-info-item">
+        <img inline src="{{ "repeat:bold" |> icon("phosphor") }}" alt="Retweets"> {{ tweet.retweets }}
+      </span>
+      <a href="{{ tweet.external_url }}" class="tweet-info-item">
+        View on <img inline src="{{ "x" |> icon("simpleicons") }}" alt="X">
+      </a>
+    </footer>
+  </blockquote>
+  {{ if tweet.media?.length }}
+  <div class="tweet-media">
+  {{ for item of tweet.media }}
+    {{ if item.type === "image" }}
+      <img src="{{ item.src }}" alt="{{ item.alt }}">
+    {{ else if item.type === "video" }}
+      <video src="{{ item.src }}" controls></video>
+    {{ /if }}
+  {{ /for }}
+  </div>
+  {{ /if }}
+</article>

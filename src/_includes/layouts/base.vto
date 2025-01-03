@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="{{ lang || metas.lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} - {{ metas.site }}</title>
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="canonical" href="{{ url |> url(true) }}">
+  </head>
+  <body>
+    <main class="page">
+      <script>
+        let theme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+        document.documentElement.dataset.theme = theme;
+        function changeTheme() {
+          theme = theme === "dark" ? "light" : "dark";
+          localStorage.setItem("theme", theme);
+          document.documentElement.dataset.theme = theme;
+        }
+      </script>
+      <button class="button page-theme" onclick="changeTheme()">
+        <span class="icon">◐</span>
+      </button>
+
+      <div class="page-search search" id="search"></div>
+
+      {{ content }}
+    </main>
+  </body>
+</html>

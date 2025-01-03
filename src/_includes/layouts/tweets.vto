@@ -1,0 +1,47 @@
+---
+layout: layouts/base.vto
+---
+
+{{ if url == "/" }}
+  <img class="page-cover" src="{{ account.header }}">
+{{ /if }}
+
+<header class="page-header">
+  <a href="/">
+    <img class="page-header-avatar" src="{{ account.avatar }}" alt="Profile picture of {{ account.username }}">
+  </a>
+  <div class="page-header-content">
+    <h1><a href="/">{{ account.displayName }}</a></h1>
+    <p>Archive with {{ pagination.totalResults }} tweets by <a href="https://x.com/{{ account.username }}">@{{ account.username }}</a></p>
+  </div>
+</header>
+
+<ul class="tweets">
+  {{ for tweet of results }}
+    <li>
+      {{ include "templates/tweet.vto" { tweet } }}
+    </li>
+{{ /for }}
+</ul>
+
+<nav class="page-navigation pagination">
+  <ul>
+    {{ if pagination.previous }}
+      <li class="pagination-prev">
+        <a href="{{ pagination.previous }}" rel="prev">
+          <span>Previous</span>
+        </a>
+      </li>
+    {{ /if }}
+    <li class="pagination-page">
+      <span>Page {{ pagination.page }} of {{ pagination.totalPages }}</span>
+    </li>
+    {{ if pagination.next }}
+      <li class="pagination-next">
+        <a href="{{ pagination.next }}" rel="next">
+          <span>Next</span>
+        </a>
+      </li>
+    {{ /if }}
+  </ul>
+</nav>

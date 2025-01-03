@@ -1,0 +1,15 @@
+lang: en
+
+account:
+  username: "misteroom"
+  displayName: "O Óscar"
+  header: "/uploads/profile_media/134160295-1597571074.jpg"
+  avatar: "/uploads/profile_media/134160295-RHx9hAK9.jpg"
+
+metas:
+  site: Twitter's archive of misteroom's tweets
+  twitter: "@misteroom"
+  fediverse: "@misteroom@mastodon.gal"
+  icon: /uploads/favicon.svg
+  lang: =lang
+  generator: true
