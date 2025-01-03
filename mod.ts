@@ -21,9 +21,8 @@ export default function (options: Partial<Options> = {}) {
       "_data.yml",
       "404.md",
       "pages.page.js",
-      "tweets.page.ts",
-      "index.vto",
       "styles.css",
+      "tweets.page.ts",
     ];
 
     for (const file of files) {
