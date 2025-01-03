@@ -1,4 +1,4 @@
-# Simple tweets archive
+# Simple twitter archive
 
 Lume theme to host your twitter/X archive.
 
